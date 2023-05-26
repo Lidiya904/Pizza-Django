@@ -1,0 +1,58 @@
+
+{% extends "generic.html" %}
+
+{% block content %}
+{% load static %}
+
+<section class="contact">
+            <div class="container">
+                <div class="row justify__content__between">
+                    <div class="col-2 profile__nav">
+                        <img class="back__logo" id="prifile__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/>
+                        <a href="{% url 'catalog:home' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/home outline.png' %}" alt="Home" />
+                            <span>Главная</span>
+                        </a>
+                        <!--<a href="{% url 'catalog:photo' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/explore.png' %}" alt="Photo" />
+                            <span>Фотогалерея</span>
+                        </a>
+                        <a href="{% url 'catalog:messager' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/messages.png' %}" alt="Messages" />
+                            <span>Сообщения</span>
+                        </a>-->
+                        <a href="{% url 'catalog:profile' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/profile outline.png' %}" alt="Profile" />
+                            <span>Профиль</span>
+                        </a>
+
+                        <a href="{% url 'catalog:newtweet' %}"><input type="submit" class="form__btn" value="Tweet"></a>
+                       <!--<li><a href="{% url 'catalog:newtweet' %}" class="form__btn">Tweet</a></li>-->
+
+                    </div>
+
+                    <div class="col-7 profile__main">
+                        <div class="head__profile">
+                            <span><a href="{% url 'logout' %}" class="exit"><img src="{% static 'img/icon/free-icon-back-3114883.png' %}" alt="Exit" /></a></span>
+                            <span>{{ user.get_username }}</span>
+                        </div>
+
+
+                        {% block contents %}{% endblock %}
+
+
+
+
+
+
+                    </div>
+
+                    <div class="col-3 ghjfile__notice">
+
+                    </div>
+                </div>
+
+
+            </div>
+   </section>
+{% endblock %}

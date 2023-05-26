@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title></title>
+
+
+        <link href="../css/reset.css" rel="stylesheet"/>
+        <link href="../css/setka.css" rel="stylesheet"/>
+        <link href="../css/master.css" rel="stylesheet"/>
+
+        
+
+
+    </head>
+    <body>
+
+        
+        <form class="sing__form">
+            <div class="container">
+                <div class="row sing__up">
+                    <div class="col-12">
+                        <img class="back__logo" id="sing__logo" src="../imgs/twitter-logo-4 1.png"/>
+                        <h1 class="sing__title__1">Create an account</h1>
+                        <input type="name" class="form__input" placeholder="Name">
+                        <input type="phone" class="form__input" placeholder="Phone number">
+                        <p class="start__subtitle"><a class="start__link" href="#">Use email</a></p>
+                        <h2 class="sing__title">Date of birth</h2>
+                        <p class="sing__subtitle">Facilisi sem pulvinar velit nunc, gravida scelerisque amet nibh sit. Quis bibendum ante phasellus metus, magna lacinia sed augue. Odio enim nascetur leo mauris vel eget. Pretium id ullamcorper blandit viverra dignissim eget tellus. Nibh mi massa in molestie a sit. Elit congue.</p>
+                        <!--<input type="date">-->
+                        <select class="sing__date">
+                            <option value="">Month</option>
+                            <option value="1">Janaury</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>                          
+                            <option value="5">May</option>                        
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select id="day" class="day__year"><br>
+                            <option value="">Day</option>
+                            <script>
+                              let x = 0
+                              while(x<31)
+                              {
+                                x++
+                                document.getElementById('day').innerHTML += '<option>'+x+'</option>'
+                              }
+                            </script>
+                        </select>
+                        <select id="year" class="day__year"><br>
+                            <option value="">Year</option>
+                            <script>
+                              let y = 1969
+                              while(y<2023)
+                              {
+                                y++
+                                document.getElementById('year').innerHTML += '<option>'+y+'</option>'
+                              }
+                            </script>
+                        </select>
+                        <input type="button" class="form__btn" id="sing__btn" value="Next">
+
+                    </div>
+
+            </div>
+        </form>
+        
+        
+
+    </body>
+
+</html>

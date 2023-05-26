@@ -1,0 +1,55 @@
+{% extends "generic.html" %}
+
+{% block content %}
+{% load static %}
+
+{% if from.errors %}
+<p>Неверныое имя пользователя или пароль. Попробуйте снова.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+    <section class="contact">
+        <div class="container">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="row lk">
+                    <div class="col-12">
+                        <form>
+
+                            <img class="back__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/>
+                            <h2 class="sing__title__1">Войти в личный кабинет</h2>
+                            <!--<input type="login" class="form__input" placeholder="Login">-->
+
+                            <div class="form-row">
+                                <input type="text" name="username" id="your-username" class="form__input" placeholder="username" required>
+                            </div>
+                            <!--<input type="password" class="form__input" placeholder="Password">-->
+
+                            <div class="form-row">
+                                <input type="password" name="password" id="password" class="form__input" placeholder="Пароль" required>
+                            </div>
+                            <input type="submit" class="form__btn" value="Войти">
+                            <!--<input type="hidden" name="next" value="{{ next }}">-->
+                        </form>
+                    </div>
+                </div>
+            </form>
+            <div class="row justify__content__around lk2">
+                <div class="col-auto lk__link"><p class="start__subtitle"><a class="start__link start__subtitle" href="{% url 'password_reset' %}">Забыли пароль?</a></p></div>
+                <div class="col-auto lk__link"><p class="start__subtitle"><a class="start__link start__subtitle" href="{% url 'catalog:signup' %}">Регистрация</a></p></div>
+            </div>
+            {{ form.errors }}
+
+        </div>
+    </section>
+
+
+{% endblock %}

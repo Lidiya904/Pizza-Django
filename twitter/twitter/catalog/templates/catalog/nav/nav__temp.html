@@ -1,0 +1,45 @@
+{% extends "generic.html" %}
+
+{% block content %}
+{% load static %}
+<body>
+    <section class="contact">
+        <div class="container">
+            <div class="row row__6">
+                <div class="col-6 contact__6">
+                    <img class="back__img" src="{% static 'img/back-twitter 1.png' %}"/>
+                </div>
+
+                <div class="col-5 cont">
+                    <form class="start__5">
+                        {% block contents %}{% endblock %}
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+        <footer>
+            <nav class="nav">
+                <div class="container">
+                    <div class="row justify__content__around">
+                        <div class="nav__menu col-auto">
+                            <ul>
+                                <li class="nav__item nav__item_first"><a class="nav__item__link" href="{% url 'catalog:about' %}">О нас</a></li>
+                                <li class="nav__item"><a class="nav__item__link" href="{% url 'catalog:help' %}">Помощь</a></li>
+                                <li class="nav__item"><a class="nav__item__link" href="{% url 'catalog:developer' %}">Разработчики</a></li>
+                                <li class="nav__item"><p class="nav__item__link">© 2023 Twitter, Inc</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </footer>
+</body>
+
+{% endblock %}

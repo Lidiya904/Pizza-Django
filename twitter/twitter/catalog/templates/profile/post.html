@@ -1,0 +1,36 @@
+{% extends "generic.html" %}
+
+{% block content %}
+{% load static %}
+
+        <div class="sing__up">
+
+            <div class="container">
+                <div class="row sing__form">
+
+                    <div class="col-12">
+                        <form action="{% url 'catalog:newtweet' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <img class="back__logo" id="sing__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/>
+                            <h1 class="sing__title__1">Новый твит</h1>
+
+
+                            {{ form.twitext }}
+                            {{ form.img }}
+
+
+
+
+
+
+
+                            <input type="submit" class="form__btn" id="sing__btn" name="next" value="Опубликовать">
+                            <!--<input type="hidden" name="next">
+                            <button onclick="history.back()" type="submit" class="form__btn" id="sing__btn">Опубликовать</button>-->
+                        </form>
+                    </div>
+                    {{ form.errors }}
+            </div>
+        </div>
+
+{% endblock %}

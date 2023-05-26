@@ -1,0 +1,21 @@
+{% extends "catalog/nav/nav__temp.html" %}
+
+{% block contents %}
+
+{% load static %}
+
+    <div class="back"><a href="{% url 'catalog:index' %}" class="exit"><img src="{% static 'img/icon/free-icon-back-3114883.png' %}" alt="Exit" /></a></div>
+    <div><img class="back__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/></div>
+    <div class="devs">
+        <h2 class="start__title_2">Прототип социальной сети Twitter</h2>
+        <p class="name__prof">Разработчик: Борель Лидия Викторовна</p>
+        <p class="info__prof">Макет страниц взят отсюда:</p>
+        <a href="#" class="info__prof">https://www.figma.com/file/6gBzc1FoBZnMupBHpx6zcf/Twitter-desktop-pages-(feed%2C-sigup%2C-login%2C-profile)-(Community)?type=design&node-id=0-1&t=ULYdUQCCTZEDMJoO-0</a>
+        <p class="info__prof">----</p>
+        <p class="info__prof">Ссылка на проект: </p>
+        <a href="#" class="info__prof"></a>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "generic.html" %}
+
+{% block content %}
+{% load static %}
+
+        <div class="sing__up">
+
+            <div class="container">
+                <div class="row sing__form">
+
+                    <div class="col-12">
+
+
+                        <img class="back__logo" id="sing__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/>
+                        <h1 class="sing__title__1">Комментарий</h1>
+                        {{ post.twitext }}
+                        <form action="{% url 'catalog:add_comment'  post.id %}" method="post">
+                            {% csrf_token %}
+
+
+                            {{ form.body }}
+                            <textarea name="body" class="text__input"></textarea>
+
+                            <input type="submit" class="form__btn" id="sing__btn" name="next" value="Опубликовать">
+                            <!--<input type="hidden" name="next">
+                            <button onclick="history.back()" type="submit" class="form__btn" id="sing__btn">Опубликовать</button>-->
+                        </form>
+                    </div>
+                    {{ form.errors }}
+            </div>
+        </div>
+
+{% endblock %}

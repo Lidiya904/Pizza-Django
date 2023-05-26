@@ -1,0 +1,14 @@
+{% extends "catalog/nav/nav__temp.html" %}
+
+{% block contents %}
+
+{% load static %}
+
+    <div class="back"><a href="{% url 'catalog:index' %}" class="exit"><img src="{% static 'img/icon/free-icon-back-3114883.png' %}" alt="Exit" /></a></div>
+    <div><img class="back__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/></div>
+    <h2 class="start__title_2">Помощь</h2>
+    <p>Чтобы получить доступ в личный кабинет, Вам нужно авторизоваться, либо зарегистрироваться.</p>
+    <p>После регистрации и авторизации Вы попадете на страницу профиля, где можете редактировать информацию о себе, писать и удалять посты (твиты), читать посты других пользователей, ставить лайки и писать комментарии.</p>
+
+
+{% endblock %}

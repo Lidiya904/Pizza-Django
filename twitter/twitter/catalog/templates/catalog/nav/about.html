@@ -1,0 +1,12 @@
+{% extends "catalog/nav/nav__temp.html" %}
+
+{% block contents %}
+{% load static %}
+
+    <div class="back"><a href="{% url 'catalog:index' %}" class="exit"><img src="{% static 'img/icon/free-icon-back-3114883.png' %}" alt="Exit" /></a></div>
+    <div><img class="back__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/></div>
+    <h2 class="start__title_2">Прототип социальной сети Twitter</h2>
+    <p>Это дипломный проект, демонстрирующий работу социальной сети.</p>
+
+
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends "generic.html" %}
+
+
+{% block content %}
+{% load static %}
+
+<section class="contact">
+            <div class="container">
+                <div class="row justify__content__between">
+                    <div class="col-2 profile__nav">
+                        <img class="back__logo" id="prifile__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/>
+                        <a href="{% url 'catalog:home' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/home outline.png' %}" alt="Home" />
+                            <span>Главная</span>
+                        </a>
+                        <!--<a href="{% url 'catalog:photo' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/explore.png' %}" alt="Photo" />
+                            <span>Фотогалерея</span>
+                        </a>
+                        <a href="{% url 'catalog:messager' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/messages.png' %}" alt="Messages" />
+                            <span>Сообщения</span>
+                        </a>-->
+                        <a href="{% url 'catalog:profile' %}" class="nav__prof__link">
+                            <img src="{% static 'img/icon/profile outline.png' %}" alt="Profile" />
+                            <span>Профиль</span>
+                        </a>
+
+                        <a href="{% url 'catalog:newtweet' %}"><input type="submit" class="form__btn" value="Tweet"></a>
+                       <!--<li><a href="{% url 'catalog:newtweet' %}" class="form__btn">Tweet</a></li>-->
+
+                    </div>
+
+                    <div class="col-7 profile__main">
+                        <div class="head__profile">
+                            <span><a href="{% url 'logout' %}" class="exit"><img src="{% static 'img/icon/free-icon-back-3114883.png' %}" alt="Exit" /></a></span>
+                            <span>{{ user.get_username }}</span>
+                        </div>
+                        <div class="fon__profile">
+
+                            <h1>{{ user.first_name}} {{ user.last_name }}</h1>
+                        </div>
+                        <div class="container tweet__1">
+                            <div class="row justify__content__between">
+                                <div class="col-6 ava__profile">
+                                    <img src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'img/profile/no-profile.png' %} {% endif %}" />
+                                </div>
+                                <div class="col-6 edit__prof">
+                                    <a href="{% url 'catalog:edit' %}" class="edit__btn">Редактировать</a>
+                                </div>
+                            </div>
+
+                            <h1 class="name__prof">{{ user.first_name}} {{ user.last_name }}</h1>
+                            <p class="info__prof">{{ user.email }}</p>
+                            <text class="info__prof">{{ user.text }}</text>
+                            <div class="infoo">
+                                <span class="info__prof">Дата рождения {{ user.date_of_birth }}</span>
+                                <span class="info__prof">Присоединился к нам {{ user.date_joined }}</span>
+                            </div>
+                            <span class="info__prof">My Tweets</span>
+                        </div>
+                        <!--<div class="post__nav">
+                            <div class="container">
+                                <div class="row justify__content__between">
+                                    <div class="nav__menu col-auto">
+                                        <ul>
+                                            <li class="nav__item nav__item_first"><a class="nav__item__link prof__nav" href="#">Tweets</a></li>
+                                            <li class="nav__item"><a class="nav__item__link prof__nav" href="#">Tweets & replies</a></li>
+                                            <li class="nav__item"><a class="nav__item__link prof__nav" href="#">Likes</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+
+                        <div class="tweets">
+
+
+                            {% for post in post_list %}
+                                <div>
+                                    <div class="container tweet">
+                                        <div class="row justify__content__between">
+                                            <div class="col-2 tweet__ava">
+                                                <img src="{% if post.user.image %} {{ post.user.image.url }} {% else %} {% static 'img/profile/no-profile.png' %} {% endif %}" />
+                                            </div>
+                                            <div class="col-10">
+                                                <div>
+                                                    <span class="tweet__info">{{ post.user }}</span>
+                                                    <span class="tweet__info">{{ post.user.email }}</span>
+                                                    <span class="tweet__info">{{ post.date }}</span>
+                                                </div>
+                                                <div class="tweet__text">
+                                                    <text>
+                                                       {{ post.twitext }}
+                                                    </text>
+                                                </div>
+                                                <div class="tweet_img">
+                                                    {% if post.img %}
+                                                        <img src="{{ post.img.url }}"/>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="row tweet__icon">
+                                                    <a href="{{ post.id }}" class="col-3">
+                                                        <img src="{% static 'img/icon/comment.png' %}" alt="Comment" />
+
+                                                    </a>
+                                                    <div>
+                                                        <a href="{% url 'catalog:add_likes' post.id %}" class="col-3 like_but">
+
+                                                            <img src="{% if likes.user_like == user.get_username %} {% static 'img/icon/like fill.png' %} {% else %} {% static 'img/icon/like.png' %} {% endif %}" alt="Like" />
+
+                                                        </a>
+                                                        <p class="tweet__info likes">{{ post.likes_set.all.count }}</p>
+
+                                                    </div>
+                                                    <script type="text/javascript">
+
+                                                        $('a.like_but').click(function(e){
+                                                            e.preventDefault();
+
+                                                            $.ajax({
+                                                                url: '{% url "catalog:add_likes" post.id %}',
+                                                                data:{
+
+                                                                },
+                                                                sucess:function(){
+
+                                                                }
+                                                            })
+                                                        });
+
+                                                    </script>
+                                                    <div class="del">
+
+
+                                                        <a href="{% url 'catalog:del_post' post.id %}" class="col-3">
+                                                            <img src="{% static 'img/icon/delete-bin-line.svg' %}" alt="Delete">
+                                                        </a>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment_tweet">
+
+                                            {% for comment in comment_list %}
+                                                {% if comment.pos_id == post.id %}
+                                                    <div class="container tweet">
+                                                        <div class="row justify__content__between">
+                                                            <div class="col-2 tweet__ava">
+                                                                <img src="{% if comment.author.image %} {{ comment.author.image.url }} {% else %} {% static 'img/profile/no-profile.png' %} {% endif %}" />
+                                                            </div>
+                                                            <div class="col-10">
+                                                                <div>
+                                                                    <span class="tweet__info">{{ comment.author }}</span>
+                                                                    <span class="tweet__info">{{ comment.author.email }}</span>
+                                                                    <span class="tweet__info">{{ comment.created }}</span>
+                                                                </div>
+                                                                <div class="tweet__text">
+                                                                    <text>
+                                                                       {{ comment.body }}
+                                                                    </text>
+                                                                </div>
+                                                                <!--<div class="row tweet__icon">
+                                                                    <a href="*" class="col-3">
+                                                                        <img src="{% static 'img/icon/comment.png' %}" alt="Comment" />
+
+                                                                    </a>
+                                                                    <a href="#more" class="col-3">
+                                                                        <img src="{% static 'img/icon/like.png' %}" alt="Like" />
+
+                                                                    </a>
+                                                                </div>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-3 ghjfile__notice">
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+{% endblock %}
+

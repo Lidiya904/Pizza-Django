@@ -1,0 +1,51 @@
+{% extends "generic.html" %}
+
+{% block content %}
+{% load static %}
+<body>
+    <section class="contact">
+        <div class="container">
+            <div class="row row__6">
+                <div class="col-6 contact__6">
+                    <img class="back__img" src="{% static 'img/back-twitter 1.png' %}"/>
+                </div>
+
+                <div class="col-5 cont">
+                    <form class="start__5">
+                        <img class="back__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/>
+                        <h1 class="start__title">Добро пожаловать в Twitter!</h1>
+                        <h2 class="start__title_2">Присоединяйся к нам прямо сейчас</h2>
+                        <a href="{% url 'catalog:signup' %}"><input type="button" class="form__btn" id="start__btn" value="Зарегистрироваться"></a>
+
+                        <p class="start__subtitle">Уже есть аккаунт? <a class="start__link start__subtitle" href="{% url 'login' %}">Войти</a></p>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+        <footer>
+            <nav class="nav">
+                <div class="container">
+                    <div class="row justify__content__around">
+                        <div class="nav__menu col-auto">
+                            <ul>
+                                <li class="nav__item nav__item_first"><a class="nav__item__link" href="{% url 'catalog:about' %}">О нас</a></li>
+                                <li class="nav__item"><a class="nav__item__link" href="{% url 'catalog:help' %}">Помощь</a></li>
+                                <li class="nav__item"><a class="nav__item__link" href="{% url 'catalog:developer' %}">Разработчики</a></li>
+                                <li class="nav__item"><p class="nav__item__link">© 2023 Twitter, Inc</p></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </footer>
+</body>
+
+{% endblock %}

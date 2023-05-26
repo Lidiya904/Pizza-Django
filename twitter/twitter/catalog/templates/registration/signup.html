@@ -1,0 +1,74 @@
+{% extends "generic.html" %}
+
+{% block content %}
+{% load static %}
+
+        <div class="sing__up">
+
+            <div class="container">
+                <div class="row sing__form">
+
+                    <div class="col-12">
+                        <form action="{% url 'catalog:signup' %}" method="post">
+                            {% csrf_token %}
+                            <img class="back__logo" id="sing__logo" src="{% static 'img/twitter-logo-4 1.png' %}"/>
+                            <h1 class="sing__title__1">Создать аккаунт</h1>
+                           <!-- <input type="name" class="form__input" placeholder="Name">
+                            <input type="email" class="form__input" placeholder="Email">
+                            <input type="password" class="form__input" placeholder="Password">
+                            <input type="password" class="form__input" placeholder="Confirm Password">-->
+                            {{ form.username }}
+                            {{ form.email }}
+                            {{ form.password1 }}
+                            {{ form.password2 }}
+<!--
+                            <h2 class="sing__title">Дата рождения</h2>
+                            <p class="sing__subtitle">Выберите из списка месяц, день и год своего рождения.</p>
+
+                            <div class="date_b">
+                                <select class="sing__date">
+                                    <option value="">Месяц</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select id="day" class="day__year"><br>
+                                    <option value="">День</option>
+                                    <script>
+                                         let x = 0
+                                         while(x<31)
+                                         {
+                                           x++
+                                           document.getElementById('day').innerHTML += '<option>'+x+'</option>'
+                                         }
+                                       </script>
+                                </select>
+                                <select id="year" class="day__year"><br>
+                                    <option value="">Год</option>
+                                    <script>
+                                         let y = 1969
+                                         while(y<2023)
+                                         {
+                                           y++
+                                           document.getElementById('year').innerHTML += '<option>'+y+'</option>'
+                                         }
+                                       </script>
+                                </select>
+                            </div>-->
+                            <input type="submit" class="form__btn" id="sing__btn" value="Далее">
+                        </form>
+                    </div>
+                    {{ form.errors }}
+            </div>
+        </div>
+
+{% endblock %}
